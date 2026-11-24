@@ -19,7 +19,9 @@ description: Use when a CBMC (C, C++) or Kani (Rust) proof is slow, taking more 
    `https://mcp.commandersolver.com/v1/solve` and passes the answer back.
 4. Run the check again with Levin as the SAT solver:
    - CBMC: `cbmc <args> --trace --external-sat-solver ./levin-sat`
-   - Kani: `cargo kani --harness <name> --solver bin="$PWD/levin-sat"`
+   - Kani: `cargo kani --harness <name> --solver bin=<folder>/levin-sat`, where `<folder>` is
+     the full path of the folder you saved `levin-sat` in, written out (Kani needs a full
+     path here, not `./levin-sat`)
 
    Levin can take up to 15 minutes, longer than a foreground command may run in Claude
    Code (10 minutes at most). Run this command **in the background** and wait for it to
