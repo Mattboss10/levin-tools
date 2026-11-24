@@ -9,26 +9,27 @@ certified answer. Your checker then prints its own result, as it would with a lo
 ## What this plugin adds
 
 - **The `levin` MCP server** at `https://mcp.commandersolver.com/mcp`, with two tools:
-  `levin_setup` (how to use Levin with your checker, including a short shell script,
-  `levin-sat`, that your checker calls as its external SAT solver) and `levin_job` (a job's
-  record: time, number of pieces, fingerprints of the checked proofs).
+  `levin_setup` (how to use Levin with your checker) and `levin_job` (a job's record: time,
+  number of pieces, fingerprints of the checked proofs).
 - **A skill** that tells Claude when and how to use Levin: only after a 5-second local try,
-  and only after you agree to send the formula. Claude shows you the `levin-sat` script
-  before saving it in your project folder.
+  and only after you agree to send the formula. The skill contains, written out in full, a
+  9-line shell script, `levin-sat`, that Claude saves in your project folder (and shows you)
+  for your checker to call as its external SAT solver. Claude never runs anything the server
+  sends back; the server's replies are answers to read.
 
 The plugin itself contains no scripts or programs: only the MCP server's address, the
 skill, this README and the licence.
 
 ## What it sends, and where
 
-The `levin-sat` script that Claude saves from `levin_setup` sends **only the numbered SAT
-formula** that your checker hands it, by HTTPS POST to
-`https://mcp.commandersolver.com/v1/solve`, and passes the answer back to the checker.
-CBMC and Kani give an external solver only numbered clauses: no source code, file names or
-variable names. Formulas with comment lines are refused, so names cannot leak by accident.
-The script also appends the answer's first line (the job id and outcome) to `levin.log`
-next to it. Nothing else is read, sent or stored on your machine. Privacy policy:
-https://mcp.commandersolver.com/privacy. Usage figures: https://mcp.commandersolver.com/stats.
+`levin-sat` sends **only the numbered SAT formula file** that your checker hands it, by
+HTTPS POST to `https://mcp.commandersolver.com/v1/solve`, and prints the answer for the
+checker. CBMC and Kani give an external solver only numbered clauses: no source code, file
+names or variable names. Formulas with comment lines are refused, so names cannot leak by
+accident. The script also appends the answer's first line (the job id and outcome) to
+`levin.log` in the folder you run the check from. Nothing else is read, sent or stored on
+your machine. Privacy policy: https://mcp.commandersolver.com/privacy. Usage figures:
+https://mcp.commandersolver.com/stats.
 
 Free at launch, within an hourly allowance per client. If Levin is busy or has no answer in
 time, the skill has Claude run the check locally instead.
