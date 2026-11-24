@@ -7,8 +7,8 @@
   "description": "Levin: fast, certified answers for CBMC and Kani checks too slow for one machine",
   "plugins": [
     {
-      "name": "levin",
-      "source": "./plugins/levin",
+      "name": "levin-certified-checks",
+      "source": "./plugins/levin-certified-checks",
       "category": "development",
       "tags": [
         "formal-verification",
