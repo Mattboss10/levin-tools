@@ -1,0 +1,24 @@
+{
+  "name": "levin-tools",
+  "owner": {
+    "name": "Matthew Cohen",
+    "url": "https://mcp.commandersolver.com"
+  },
+  "description": "Levin: fast, certified answers for CBMC and Kani checks too slow for one machine",
+  "plugins": [
+    {
+      "name": "levin",
+      "source": "./plugins/levin",
+      "category": "development",
+      "tags": [
+        "formal-verification",
+        "cbmc",
+        "kani",
+        "rust",
+        "c",
+        "sat"
+      ],
+      "description": "Fast, certified answers for CBMC and Kani checks too slow for one machine"
+    }
+  ]
+}

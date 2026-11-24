@@ -1,0 +1,11 @@
+#!/bin/sh
+# Levin as the checker's SAT solver: CBMC --external-sat-solver levin-sat, or
+# cargo kani --solver bin=levin-sat. It receives only the numbered formula. Each answer's
+# first line, which names Levin's job, is also kept in ./levin.log.
+reply="$1.levin"
+curl -sS --fail-with-body --max-time 900 -H 'Content-Type: text/plain' \
+  --data-binary @"$1" "${LEVIN_URL:-https://mcp.commandersolver.com}/v1/solve" > "$reply"
+status=$?
+head -n 1 "$reply" >> levin.log
+cat "$reply" && rm -f "$reply"
+exit $status

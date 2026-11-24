@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "levin": {
+      "type": "http",
+      "url": "https://mcp.commandersolver.com/mcp"
+    }
+  }
+}
