@@ -18,7 +18,23 @@
         "c",
         "sat"
       ],
-      "description": "Fast, certified answers for CBMC and Kani checks too slow for one machine"
+      "description": "Fast, certified answers for CBMC and Kani checks too slow for one machine",
+      "relevance": {
+        "topic": "formal verification",
+        "signals": {
+          "cli": [
+            "cbmc",
+            "kani"
+          ],
+          "filesRead": [
+            "**/*harness*",
+            "**/*_proof.rs",
+            "**/proofs/**",
+            "**/kani/**",
+            "**/verification/**"
+          ]
+        }
+      }
     }
   ]
 }

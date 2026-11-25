@@ -1,7 +1,7 @@
 {
   "name": "levin-certified-checks",
   "displayName": "Levin Certified Checks",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Fast, certified answers for CBMC (C, C++) and Kani (Rust) checks that are too slow for one machine: the SAT formula is split across many machines and every piece's proof is checked. Only the numbered formula leaves your machine.",
   "author": {
     "name": "Matthew Cohen",
