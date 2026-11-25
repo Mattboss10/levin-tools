@@ -38,6 +38,12 @@ time, the skill has Claude run the check locally instead.
 
 CBMC or Kani installed on your machine, and `curl`.
 
+## Try it on ready-made slow checks
+
+The [levin-examples](https://github.com/Mattboss10/levin-examples) repo has CBMC checks
+that are too slow for one machine. Clone it, open it in Claude Code, and ask Claude to
+prove one.
+
 ## Install
 
 ```
